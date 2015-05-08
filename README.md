@@ -33,6 +33,8 @@ filter value entered would look something like this:
 my-filter term_id=9
 ```
 
+***Do Not Include any extra spaces or quotes arround values, names or the =***
+
 You can pass any number are arguments to your filter and they will be converted into an array. For example the
 following:
 ```
