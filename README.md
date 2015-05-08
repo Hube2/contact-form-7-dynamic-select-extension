@@ -1,2 +1,2 @@
-Contact Form 7 - Dynamic Text Extension
+Contact Form 7 - Dynamic Select Extension
 ---------------------------------------
