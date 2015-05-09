@@ -62,7 +62,9 @@ This will call the function assocaited with the filter hook 'my-filter' with an 
 )`
 
 Your filter must return an array. The array must be a list of "Label" => "Value" pairs.
-For mor information see the example in cf7-dynamic-select-examples.php included in the plugin folder.
+For more information see the example in cf7-dynamic-select-examples.php included in the plugin folder.
+
+[Also on GitHub](https://github.com/Hube2/contact-form-7-dynamic-select-extension)
 
 == Installation ==
 
