@@ -12,7 +12,9 @@ Example Filter:
 
 ```
 function cf7_dynamic_select_do_example1($choices, $args=array()) {
-	// this function returns and array of label => value pairs to be used in the select field
+	// this function returns an array of 
+	// label => value pairs to be used in
+	// a the select field
 	$choices = array(
 		'-- Make a Selection --' => '',
 		'Choice 1' => 'Choice 1',
