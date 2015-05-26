@@ -101,6 +101,10 @@
 				} else {
 					$value = stripslashes_deep($_POST[$name]);
 				}
+			} else {
+				if (isset($_GET[$name])) {
+					$value = $_GET[$name];
+				}
 			}
 			$filter = '';
 			$filter_args = array();
