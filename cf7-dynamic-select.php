@@ -4,7 +4,7 @@
 		Plugin Name: Contact Form 7 - Dynamic Select Extension
 		Plugin URI: https://github.com/Hube2/contact-form-7-dynamic-select-extension
 		Description: Provides a dynamic select field that accepts any shortcode to generate the select values. Requires Contact Form 7
-		Version: 1.0.1
+		Version: 1.0.2
 		Author: John A. Huebner II
 		Author URI: https://github.com/Hube2/
 		License: GPL
@@ -238,7 +238,7 @@
 		public function tg_pane($type='dynamicselect') {
 			// output the code for CF7 tag generator
 			?>
-				<div id="wpcf7-tg-pane-<?php echo $type; ?>" class="hidden">
+				<div id="wpcf7-tg-pane-<?php echo $type; ?>" class="control-box">
 					<form action="">
 						<table>
 							<tr>
@@ -270,7 +270,7 @@
 								<td>
 									<?php echo esc_html(__('Filter', 'wpcf7')); ?>
 										(<?php echo esc_html(__('Filter','wpcf7' ) ); ?>)<br />
-										<input type="text" name="values" class="oneline" />
+										<input type="text" name="values" class="oneline" /><br />
 										<?php echo esc_html(__('You can enter any filter. Use single quotes only. See docs &amp; examples.', 'wpcf7')); ?>
 								</td>
 								<td>
@@ -283,11 +283,11 @@
 						<div class="tg-tag">
 							<?php echo esc_html(__('Copy this code and paste it into the form left.', 'wpcf7')); ?><br />
 							<input type="text" name="<?php 
-									echo $type; ?>" class="tag" readonly="readonly" onfocus="this.select()" />
+									echo $type; ?>" class="tag" readonly="readonly" onfocus="this.select()" style="width:100%;" />
 						</div>
 						<div class="tg-mail-tag">
 							<?php echo esc_html(__('And, put this code into the Mail fields below.', 'wpcf7')); ?><br />
-							<input type="text" class="mail-tag" readonly="readonly" onfocus="this.select()" />
+							<input type="text" class="mail-tag" readonly="readonly" onfocus="this.select()" style="width:100%;" />
 						</div>
 					</form>
 				</div>

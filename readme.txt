@@ -3,7 +3,7 @@ Contributors: Hube2
 Tags: contact form 7 dynamic select drop down menu
 Requires at least: 4.0
 Tested up to: 4.2
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 Donate link:
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -81,6 +81,10 @@ For more information see the example in cf7-dynamic-select-examples.php included
 
 
 == Changelog ==
+
+= 1.0.2 =
+
+* updated to work with CF7 V4.2 (tag pane still needs some work to make it 100% but it can be used and it will still work with previous versions of CF7)
 
 = 1.0.1 =
 
