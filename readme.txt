@@ -3,7 +3,7 @@ Contributors: Hube2
 Tags: contact form 7 dynamic select drop down menu
 Requires at least: 4.0
 Tested up to: 4.2
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 Donate link:
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -81,6 +81,10 @@ For more information see the example in cf7-dynamic-select-examples.php included
 
 
 == Changelog ==
+
+= 1.0.1 =
+
+* Preserve $_GET value - If the value of the field is present in query string, preset the selected values.
 
 = 1.0.0 =
 

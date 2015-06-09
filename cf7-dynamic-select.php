@@ -4,7 +4,7 @@
 		Plugin Name: Contact Form 7 - Dynamic Select Extension
 		Plugin URI: https://github.com/Hube2/contact-form-7-dynamic-select-extension
 		Description: Provides a dynamic select field that accepts any shortcode to generate the select values. Requires Contact Form 7
-		Version: 1.0.0
+		Version: 1.0.1
 		Author: John A. Huebner II
 		Author URI: https://github.com/Hube2/
 		License: GPL
@@ -132,6 +132,8 @@
 			}
 			//$field_options = do_shortcode('['.$shortcode.']');
 			//echo '<pre>'; print_r($field_options); echo '</pre>';
+			//echo 'here'; die;
+			//echo $name.': '.$filter.'<br />';
 			
 			$field_options = apply_filters($filter, array(), $filter_args);
 			
