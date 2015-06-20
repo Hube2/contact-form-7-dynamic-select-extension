@@ -4,7 +4,7 @@
 		Plugin Name: Contact Form 7 - Dynamic Select Extension
 		Plugin URI: https://github.com/Hube2/contact-form-7-dynamic-select-extension
 		Description: Provides a dynamic select field that accepts any shortcode to generate the select values. Requires Contact Form 7
-		Version: 1.0.2
+		Version: 1.1.0
 		Author: John A. Huebner II
 		Author URI: https://github.com/Hube2/
 		License: GPL
@@ -13,7 +13,7 @@
 	// If this file is called directly, abort.
 	if (!defined('WPINC')) { die; }
 	
-	include(dirname(__FILE__).'/cf7-dynamic-select-examples.php');
+	//include(dirname(__FILE__).'/cf7-dynamic-select-examples.php');
 	
 	new wpcf7_dynamic_select();
 	
@@ -225,73 +225,164 @@
 			$name = 'dynamicselect';
 			$title = __('Dynamic Select field', 'wpcf7');
 			$elm_id = 'wpcf7-tg-pane-dynamicselect';
-			$callback = array($this, 'tg_pane_');
+			$callback = array($this, 'tg_pane');
 			wpcf7_add_tag_generator($name, $title, $elm_id, $callback);
 		} // end public function add_tag_generator
 		
-		public function tg_pane_($form) {
-			// not sure I understand why this is the callback and then we call the tag generator
-			// I believe it is to dump the whatever is in $form
-			$this->tg_pane('dynamicselect');
-		} // end public function tag_pane_
-		
-		public function tg_pane($type='dynamicselect') {
+		public function tg_pane($form, $args = '') {
 			// output the code for CF7 tag generator
-			?>
-				<div id="wpcf7-tg-pane-<?php echo $type; ?>" class="control-box">
-					<form action="">
-						<table>
-							<tr>
-								<td>
-									<input type="checkbox" name="required" />
-									<?php echo esc_html(__('Required field?', 'wpcf7')); ?>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<?php echo esc_html(__( 'Name', 'wpcf7')); ?><br />
-									<input type="text" name="name" class="tg-name oneline" />
-								</td>
-								<td></td>
-							</tr>
-						</table>
-						<table>
-							<tr>
-								<td>
-									<code>id</code> (<?php echo esc_html(__('optional', 'wpcf7')); ?>)<br />
-									<input type="text" name="id" class="idvalue oneline option" />
-								</td>
-								<td>
-									<code>class</code> (<?php echo esc_html(__('optional', 'wpcf7')); ?>)<br />
-									<input type="text" name="class" class="classvalue oneline option" />
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<?php echo esc_html(__('Filter', 'wpcf7')); ?>
-										(<?php echo esc_html(__('Filter','wpcf7' ) ); ?>)<br />
-										<input type="text" name="values" class="oneline" /><br />
-										<?php echo esc_html(__('You can enter any filter. Use single quotes only. See docs &amp; examples.', 'wpcf7')); ?>
-								</td>
-								<td>
-									<br />
-									<input class="option" type="checkbox" name="multiple">
-									Allow multiple selections?
-								</td>
-							</tr>
-						</table>
-						<div class="tg-tag">
-							<?php echo esc_html(__('Copy this code and paste it into the form left.', 'wpcf7')); ?><br />
-							<input type="text" name="<?php 
-									echo $type; ?>" class="tag" readonly="readonly" onfocus="this.select()" style="width:100%;" />
+			$type='dynamicselect';
+			if (class_exists('WPCF7_TagGenerator')) {
+				// tag generator for CF7 >= v4.2
+				$args = wp_parse_args( $args, array() );
+				$desc = __('Generate a form-tag for a Dynamic Select field. For more details, see %s.');
+				$desc_link = '<a href="https://wordpress.org/plugins/contact-form-7-dynamic-select-extension/" target="_blank">'.__( 'Contact Form 7 - Dynamic Select Extension').'</a>';
+				?>
+					<div class="control-box">
+						<fieldset>
+							<legend><?php echo sprintf(esc_html($desc), $desc_link); ?></legend>
+							<table class="form-table">
+								<tbody>
+									<tr>
+										<th scope="row">
+											<label for="<?php 
+													echo esc_attr($args['content'].'-required'); ?>"><?php 
+													echo esc_html(__('Required field', 'contact-form-7')); ?></label>
+										</th>
+										<td>
+											<input type="checkbox" name="required" id="<?php 
+													echo esc_attr($args['content'].'-required' ); ?>" />
+										</td>
+									</tr>
+									<tr>
+										<th scope="row">
+											<label for="<?php 
+													echo esc_attr($args['content'].'-name'); ?>"><?php 
+													echo esc_html(__('Name', 'contact-form-7')); ?></label>
+										</th>
+										<td>
+											<input type="text" name="name" class="tg-name oneline" id="<?php 
+													echo esc_attr($args['content'].'-name' ); ?>" />
+										</td>
+									</tr>
+									<tr>
+										<th scope="row">
+											<label for="<?php 
+													echo esc_attr($args['content'].'-id'); ?>"><?php 
+													echo esc_html(__('Id attribute', 'contact-form-7')); ?></label>
+										</th>
+										<td>
+											<input type="text" name="id" class="idvalue oneline option" id="<?php 
+													echo esc_attr($args['content'].'-id'); ?>" />
+										</td>
+									</tr>
+									<tr>
+										<th scope="row">
+											<label for="<?php 
+													echo esc_attr($args['content'].'-class'); ?>"><?php 
+													echo esc_html(__('Class attribute', 'contact-form-7'));?></label>
+										</th>
+										<td>
+											<input type="text" name="class" class="classvalue oneline option" id="<?php 
+													echo esc_attr($args['content'].'-class'); ?>" />
+										</td>
+									</tr>
+									<tr>
+										<th scope="row">
+											<label for="<?php 
+													echo esc_attr($args['content'].'-values'); ?>"><?php 
+													echo esc_html(__('Filter')); ?></label>
+										</th>
+										<td>
+											<input type="text" name="values" class="tg-name oneline" id="<?php 
+													echo esc_attr($args['content'].'-values' ); ?>" /><br />
+													<?php 
+														echo esc_html(__('You can enter any filter. Use single quotes only. 
+														                  See docs &amp; examples.'));
+													?>
+										</td>
+									</tr>
+									<tr>
+										<th scope="row">
+											<label for="<?php 
+													echo esc_attr($args['content'].'-multiple'); ?>"><?php 
+													echo esc_html(__('Allow multiple selections', 'contact-form-7')); ?></label>
+										</th>
+										<td>
+											<input type="checkbox" name="multiple" id="<?php 
+													echo esc_attr($args['content'].'-multiple' ); ?>" />
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</fieldset>
+					</div>
+					<div class="insert-box">
+						<input type="text" name="simplehidden" class="tag code" readonly="readonly" onfocus="this.select()" />
+						<div class="submitbox">
+							<input type="button" class="button button-primary insert-tag" value="<?php 
+									echo esc_attr(__('Insert Tag', 'contact-form-7')); ?>" />
 						</div>
-						<div class="tg-mail-tag">
-							<?php echo esc_html(__('And, put this code into the Mail fields below.', 'wpcf7')); ?><br />
-							<input type="text" class="mail-tag" readonly="readonly" onfocus="this.select()" style="width:100%;" />
-						</div>
-					</form>
-				</div>
-			<?php 
+					</div>
+				<?php 
+			} else {
+				// tag generator for CF7 <v4.2
+				// but modified slightly so it will still work with with >= v4.2
+				?>
+					<div id="wpcf7-tg-pane-<?php echo $type; ?>" class="control-box">
+						<form action="">
+							<table>
+								<tr>
+									<td>
+										<input type="checkbox" name="required" />
+										<?php echo esc_html(__('Required field?', 'contact-form-7')); ?>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<?php echo esc_html(__( 'Name', 'contact-form-7')); ?><br />
+										<input type="text" name="name" class="tg-name oneline" />
+									</td>
+									<td></td>
+								</tr>
+							</table>
+							<table>
+								<tr>
+									<td>
+										<code>id</code> (<?php echo esc_html(__('optional', 'contact-form-7')); ?>)<br />
+										<input type="text" name="id" class="idvalue oneline option" />
+									</td>
+									<td>
+										<code>class</code> (<?php echo esc_html(__('optional', 'contact-form-7')); ?>)<br />
+										<input type="text" name="class" class="classvalue oneline option" />
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<?php echo esc_html(__('Filter')); ?><br />
+											<input type="text" name="values" class="oneline" /><br />
+											<?php echo esc_html(__('You can enter any filter. Use single quotes only. See docs &amp; examples.')); ?>
+									</td>
+									<td>
+										<br />
+										<input class="option" type="checkbox" name="multiple">
+										Allow multiple selections?
+									</td>
+								</tr>
+							</table>
+							<div class="tg-tag">
+								<?php echo esc_html(__('Copy this code and paste it into the form left.', 'contact-form-7')); ?><br />
+								<input type="text" name="<?php 
+										echo $type; ?>" class="tag" readonly="readonly" onfocus="this.select()" style="width:100%;" />
+							</div>
+							<div class="tg-mail-tag">
+								<?php echo esc_html(__('And, put this code into the Mail fields below.', 'contact-form-7')); ?><br />
+								<input type="text" class="mail-tag" readonly="readonly" onfocus="this.select()" style="width:100%;" />
+							</div>
+						</form>
+					</div>
+				<?php 
+			}
 		} // end public function tag_pane
 		
 	} // end class cf7_dynamic_select
