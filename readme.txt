@@ -79,6 +79,15 @@ For more information see the example in cf7-dynamic-select-examples.php included
 
 == Frequently Asked Questions ==
 
+= Why Filters? =
+
+Many other plugins of this type use shortcodes. I'm not a real fan of shortcodes, but that's not the only
+reason. 
+
+Filters are much more flexible that shortcodes. 
+
+For example, a shortcode cannot return an array. A shortcode pretty much requires that only a text value is returned.
+
 
 == Changelog ==
 
