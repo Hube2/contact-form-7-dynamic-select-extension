@@ -3,7 +3,7 @@ Contributors: Hube2
 Tags: contact form 7 dynamic select drop down menu
 Requires at least: 4.0
 Tested up to: 4.3
-Stable tag: 1.1.0
+Stable tag: 1.1.1
 Donate link:
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -90,6 +90,10 @@ For example, a shortcode cannot return an array. A shortcode pretty much require
 
 
 == Changelog ==
+
+= 1.1.1 = 
+
+* Corrected a bug, incorrect field type name when creating new field, introduced in 1.1.0
 
 = 1.1.0 =
 
