@@ -190,8 +190,6 @@
 			$wpcf7_contact_form = WPCF7_ContactForm::get_current();
 			$type = $tag['type'];
 			$name = $tag['name'];
-			$result['valid'] = false;
-			$result['reason'][$name] = $wpcf7_contact_form->message('invalid_required');
 			if ($type != 'dynamicselect*') {
 				return $result;
 			}
@@ -212,6 +210,8 @@
 			} // end if set
 			if (!$value_found) {
 				$result->invalidate($tag, wpcf7_get_message('invalid_required'));
+				$result['valid'] = false;
+				$result['reason'][$name] = $wpcf7_contact_form->message('invalid_required');
 			}
 			return $result;
 		} // end public function validation_filter
