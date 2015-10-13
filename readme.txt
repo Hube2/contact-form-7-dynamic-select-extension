@@ -93,7 +93,7 @@ For example, a shortcode cannot return an array. A shortcode pretty much require
 
 = 1.1.2 =
 
-* Fix validation error removing other attributes, thanks patrickgalbraith
+* Fix validation error removing other attributes, thanks pjgalbraith
 * Changed name of plugin to meet new WP guidelines
 
 = 1.1.1 = 
