@@ -154,7 +154,7 @@
 			$invalid = 'false';
 			if ($validation_error) {
 				$invalid = true;
-				$atts = ' aria-invalid="'.$invalid.'"';
+				$atts .= ' aria-invalid="'.$invalid.'"';
 			}
 			
 			
