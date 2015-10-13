@@ -1,4 +1,4 @@
-Contact Form 7 - Dynamic Select Extension
+Dynamic Select for Contact Form 7
 ---------------------------------------
 
 Add dynamically generated select fields (Drop-down menus) to forms in Contact Form 7 using filters
