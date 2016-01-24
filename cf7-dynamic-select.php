@@ -63,11 +63,14 @@
 			}
 			
 			$multiple = false;
+			$returnlabels = false;
 			if (count($options)) {
 				foreach ($options as $option) {
 					if ($option == 'multiple') {
 						$multiple_att = ' multiple="multiple"';
 						$multiple = true;
+					} elseif($option == 'returnlabels') {
+						$returnlabels = true;
 					} elseif (preg_match('%^id:([-0-9a-zA-Z_]+)$%', $option, $matches)) {
 						$id_att = $matches[1];
 					} elseif (preg_match('%^class:([-0-9a-zA-Z_]+)$%', $option, $matches)) {
@@ -309,10 +312,24 @@
 													echo esc_html(__('Allow multiple selections', 'contact-form-7')); ?></label>
 										</th>
 										<td>
-											<input type="checkbox" name="multiple" id="<?php 
+											<input type="checkbox" name="multiple" class="multiplevalue option" id="<?php 
 													echo esc_attr($args['content'].'-multiple' ); ?>" />
 										</td>
 									</tr>
+									<!-- 
+									<tr>
+										<th scope="row">
+											<label for="<?php 
+													echo esc_attr($args['content'].'-returnlabels'); ?>"><?php 
+													echo esc_html(__('Return Label(s)', 'contact-form-7')); ?></label>
+										</th>
+										<td>
+											<input type="checkbox" name="returnlabels" class="returnlabelsvalue option" id="<?php 
+													echo esc_attr($args['content'].'-returnlabel' ); ?>" />
+											Check this box to return labels instead of values.
+										</td>
+									</tr>
+									-->
 								</tbody>
 							</table>
 						</fieldset>
