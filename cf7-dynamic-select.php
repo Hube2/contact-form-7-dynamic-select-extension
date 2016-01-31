@@ -106,7 +106,7 @@
 				}
 			} else {
 				if (isset($_GET[$name])) {
-					$value = $_GET[$name];
+					$value = stripslashes_deep($_GET[$name]);
 				}
 			}
 			$filter = '';
@@ -160,6 +160,21 @@
 				$atts .= ' aria-invalid="'.$invalid.'"';
 			}
 			
+			$default = '';
+			if (isset($field_options['default'])) {
+				$default = $field_options['default'];
+				unset($field_options['default']);
+			}
+			if (!is_array($default)) {
+				$default = array($default);
+			}
+			if (!$multiple && count($default) > 1) {
+				$default = array(array_pop($default));
+			}
+			$use_default = true;
+			if (isset($_POST[$name]) || isset($_GET[$name])) {
+				$use_default = false;
+			}
 			
 			ob_start();
 			?>
@@ -171,10 +186,16 @@
 								$option_label = esc_attr($option_label);
 								?>
 									<option value="<?php echo $option_value; ?>"<?php 
-												if (!is_array($value) && $value == $option_value) {
-													echo ' selected="selected"';
-												} elseif (is_array($value) && in_array($option_value, $value)) {
-													echo ' selected="selected"';
+												if (!$use_default) {
+													if (!is_array($value) && $value == $option_value) {
+														echo ' selected="selected"';
+													} elseif (is_array($value) && in_array($option_value, $value)) {
+														echo ' selected="selected"';
+													}
+												} else {
+													if (in_array($option_value, $default)) {
+														echo ' selected="selected"';
+													}
 												}
 											?>><?php echo $option_label; ?></option>
 								<?php 

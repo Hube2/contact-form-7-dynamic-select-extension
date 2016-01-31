@@ -15,7 +15,8 @@
 			'Choice 2' => 'Choice 2',
 			'Choice 3' => 'Choice 3',
 			'Choice 4' => 'Choice 4',
-			'Choice 5' => 'Choice 5'
+			'Choice 5' => 'Choice 5',
+			'default' => array('Choice 2', 'Choice 3')
 		);
 		return $choices;
 	} // end function cf7_dynamic_select_do_example1
