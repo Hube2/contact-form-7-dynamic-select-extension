@@ -2,7 +2,7 @@
 Contributors: Hube2
 Tags: contact form 7 dynamic select drop down menu
 Requires at least: 4.0
-Tested up to: 4.4
+Tested up to: 4.6
 Stable tag: 1.2.0
 Donate link:
 License: GPLv2 or later

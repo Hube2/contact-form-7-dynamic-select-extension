@@ -13,7 +13,7 @@
 	// If this file is called directly, abort.
 	if (!defined('WPINC')) { die; }
 	
-	include(dirname(__FILE__).'/cf7-dynamic-select-examples.php');
+	//include(dirname(__FILE__).'/cf7-dynamic-select-examples.php');
 	
 	new wpcf7_dynamic_select();
 	
