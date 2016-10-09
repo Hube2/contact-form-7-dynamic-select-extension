@@ -3,8 +3,8 @@ Contributors: Hube2
 Tags: contact form 7 dynamic select drop down menu
 Requires at least: 4.0
 Tested up to: 4.6
-Stable tag: 1.2.0
-Donate link:
+Stable tag: 1.2.1
+Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=hube02%40earthlink%2enet&lc=US&item_name=Donation%20for%20WP%20Plugins%20I%20Use&no_note=0&cn=Add%20special%20instructions%20to%20the%20seller%3a&no_shipping=1&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -90,6 +90,9 @@ For example, a shortcode cannot return an array. A shortcode pretty much require
 
 
 == Changelog ==
+
+= 1.2.1 =
+* corrected possible fatal error from duplicate function
 
 = 1.2.0 =
 * Added default value logic
