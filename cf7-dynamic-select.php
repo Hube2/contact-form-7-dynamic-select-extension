@@ -26,8 +26,8 @@
 		public function init() {
 			if(function_exists('wpcf7_add_shortcode')){
 				/* Shortcode handler */		
-				wpcf7_add_shortcode('dynamicselect', array($this, 'shortcode_handler'), true);
-				wpcf7_add_shortcode('dynamicselect*', array($this, 'shortcode_handler'), true);
+				wpcf7_add_form_tag('dynamicselect', array($this, 'shortcode_handler'), true);
+				wpcf7_add_form_tag('dynamicselect*', array($this, 'shortcode_handler'), true);
 			}
 			add_filter('wpcf7_validate_dynamicselect', array($this, 'validation_filter'), 10, 2);
 			add_filter('wpcf7_validate_dynamicselect*', array($this, 'validation_filter'), 10, 2);
