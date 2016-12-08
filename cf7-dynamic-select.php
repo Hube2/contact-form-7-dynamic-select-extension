@@ -181,7 +181,7 @@
 				<span class="wpcf7-form-control-wrap <?php echo $name; ?>">
 					<select <?php echo trim($atts); ?>>
 						<?php 
-							foreach ($field_options as $option_label => $option_value) {
+							foreach ($field_options as $option_value => $option_label) {
 								$option_value =  esc_attr($option_value);
 								$option_label = esc_attr($option_label);
 								?>
