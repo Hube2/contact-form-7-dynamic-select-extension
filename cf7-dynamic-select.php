@@ -39,7 +39,7 @@
 		
 		public function shortcode_handler($tag) {
 			// generates html for form field
-			if (!is_array($tag)) {
+			if (!is_a($tag, 'WPCF7_FormTag')) {
 				return '';
 			}
 			$name = $tag['name'];
