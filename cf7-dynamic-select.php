@@ -39,7 +39,7 @@
 		
 		public function shortcode_handler($tag) {
 			// generates html for form field
-			if (!is_a($tag, 'WPCF7_FormTag')) {
+			if (is_a($tag, 'WPCF7_FormTag')) {
 				$tag = (array)$tag;
 			}
 			if (empty($tag)) {
@@ -217,7 +217,7 @@
 		
 		public function validation_filter($result, $tag) {
 			$tag_o = $tag;
-			if (!is_a($tag, 'WPCF7_FormTag')) {
+			if (is_a($tag, 'WPCF7_FormTag')) {
 				$tag = (array)$tag;
 			}
 			// valiedates field on submit
