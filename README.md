@@ -1,4 +1,5 @@
-# Dynamic Select for Contact Form 7
+Dynamic Select for Contact Form 7
+---------------------------------------
 
 # Adopt my Contact Form 7 (CF7) Plugins
 
@@ -35,88 +36,52 @@ If you are interested in adopting all 3 of these plugins please open up an issue
 
 Add dynamically generated select fields (Drop-down menus) to forms in Contact Form 7 using filters
 
-## Quick Start
+How To Use
+----------
 
-### Create your filter
+1) Create a filter to be called from your CF7 Dynamic Select Field.
 
-**Example Filter:**
-
-Here is an example filter for pulling in an `event` custom post type and then passing the events into the select dropdown. This filter is named `cf7_custom_get_events`, but you can name your filter whatever you want:
+Example Filter:
 
 ```
-add_filter('cf7_custom_get_events', function($choices, $args = []){
-
-    $events = get_posts("post_type=event&posts_per_page=-1");
-
-	// Add an optional empty option
-    $choices = [
-        '' => '',
-    ];
-
-	// Populate our events into the choices array
-	foreach($events as $event) {
-		$event_name = $event->post_title;
-		$choices[$event_name] = $event_name;
-	}
-
-	// Return our choices
-    return $choices;
-}, 10, 2);
+function cf7_dynamic_select_do_example1($choices, $args=array()) {
+	// this function returns an array of 
+	// label => value pairs to be used in
+	// a the select field
+	$choices = array(
+		'-- Make a Selection --' => '',
+		'Choice 1' => 'Choice 1',
+		'Choice 2' => 'Choice 2',
+		'Choice 3' => 'Choice 3',
+		'Choice 4' => 'Choice 4',
+		'Choice 5' => 'Choice 5'
+	);
+	return $choices;
+} // end function cf7_dynamic_select_do_example1
+add_filter('wpcf7_dynamic_select_example1', 'cf7_dynamic_select_do_example1', 10, 2)
 ```
 
-### Adding in parameters
-
-Let's use the filter from our previous example to get only the events of a custom taxonomy called `event_cat` by the term slug.
-
-We would pass in the paramater through the form. **Do Not Include any extra spaces or quotes arround values, names, or the equals sign:**
+2) Enter the filter name and any arguments into the Fitler Field when adding a Dynamic Select Field.
+For example, if we need to supply a term_id so that the filter can get the posts in a category the
+filter value entered would look something like this:
 ```
-cf7_custom_get_events event_cat_slug=concerts
-```
-You can pass any number of arguments to your filter. These parameters will be will be converted into an array:
-```
-cf7_custom_get_events event_cat_slug=concerts event_start_date=20180531
-```
-This would pass our filter an array (here we call it `$args`) that we can use to refine our query:
-```
-add_filter('cf7_custom_get_events', function($choices, $args = []){
-
-	// Grab the parameters we passed down when we created the dynamic select field
-	$event_category_slug = $args['event_cat_sug'];
-	$event_start_date = $args['event_start_date'];
-
-	$events = get_posts([
-		'post_type' => 'event',
-		'posts_per_page' => -1,
-		'tax_query' => [
-            [
-                'taxonomy' => 'event_cat',
-                'field' => 'slug',
-                'terms' => $event_category_slug,
-            ]
-		],
-        'meta_query' => [
-            [
-                'key' => 'start_date',
-                'value' => $event_start_date,
-                'compare' => '>='
-            ]
-        ],
-	]);
-
-	// Add an optional empty option
-    $choices = [
-        '' => '',
-    ];
-
-	// Populate our events into the choices array
-	foreach($events as $event) {
-		$event_name = $event->post_title;
-		$choices[$event_name] = $event_name;
-	}
-
-	// Return our choices
-    return $choices;
-}, 10, 2);
+my-filter term_id=9
 ```
 
-Your filter must return an array. The array *must* be a list of "key" => "value" pairs.
+***Do Not Include any extra spaces or quotes arround values, names or the =***
+
+You can pass any number are arguments to your filter and they will be converted into an array. For example the
+following:
+```
+my-filter product-type=101 brand=500
+```
+This will call the function assocaited with the filter hook 'my-filter' with an arguments the argument array of:
+```
+$args = array(
+    'product-type' => 101,
+    'brand'        => 500
+)
+```
+
+Your filter must return an array. The array must be a list of "Label" => "Value" pairs.
+For mor information see the example in cf7-dynamic-select-examples.php
