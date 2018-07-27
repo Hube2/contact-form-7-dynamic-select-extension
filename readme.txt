@@ -1,6 +1,6 @@
 === Dynamic Select for Contact Form 7 ===
 Contributors: Hube2
-Tags: contact form 7 dynamic select drop down menu
+Tags: adopt-me, contact form 7, dynamic, select, drop down menu
 Requires at least: 4.0
 Tested up to: 4.9
 Stable tag: 2.0.3
@@ -12,6 +12,8 @@ Add Dynamic Select Fields in Contact Form 7.
 
 
 == Description ==
+
+Addopt this plugin. [Please see details on Github](https://github.com/Hube2/contact-form-7-dynamic-select-extension).
 
 Create dynamic select fields in contact form 7. Requires Contact Form 7.
 
