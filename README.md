@@ -10,6 +10,9 @@ The reasons for this are:
   * It is too difficult to use for my average client
   * It does not support the features my clients want
   * The authour of CF7 makes too many backwards compatibility breaking changes
+  * I simply do not have time to keep up with maintenence for plugins I no longer use
+
+These plugins do have users and are usefull for those that use CF7 and I'd rather someone else takes them over than let them die.
 
 The 3 plugins involved are:
 * At WP
