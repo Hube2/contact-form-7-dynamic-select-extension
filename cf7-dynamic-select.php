@@ -68,7 +68,7 @@ class wpcf7_dynamic_select
         $class_att = '';
         $multiple_att = '';
         $tabindex_att = '';
-        $class_att .= ' wpcf7-select';
+        $class_att .= 'wpcf7-form-control wpcf7-select';
 
         if ($type == 'dynamicselect*') {
             $class_att .= ' wpcf7-validates-as-required';
